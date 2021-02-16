@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <span class="navbar-brand mb-0 h1">
+        <img src="https://svg-clipart.com/svg/food/coxfL4z-recipe-icon-vector.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Recipe Book
+    </span>
+   <!-- <span class="navbar-brand mb-0 h1">Recipe Book</span> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a 
+            class="nav-link" 
+            href="#" 
+            #recipeElement
+            (click)="onClickNav(recipeElement)">Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a 
+            class="nav-link" 
+            href="#"
+            #shoppingListElement
+            (click)="onClickNav(shoppingListElement)">Shopping List</a>
+        </li>     
+      </ul>
+      <ul class="navbar-nav navbar-right mr-5">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Manage
+            </a>
+            <div class="dropdown-menu" style="min-width: 5rem;" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Save</a>
+              <a class="dropdown-item" href="#">Fetch Data</a>
+            </div>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
