@@ -20,9 +20,4 @@ export class RecipesComponent implements OnInit {
       }
     );
   }
-
-  // selectedRecipe(event:Recipe){
-  //   this.selectedRecipefromList = event;
-  // }
-
 }
