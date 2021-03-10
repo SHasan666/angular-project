@@ -7,9 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project-angular';
-  clickedNav:string = 'Recipes';
-
-  onNavClicked(event:string){
-    this.clickedNav = event;
-  }
 }

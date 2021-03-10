@@ -8,15 +8,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   
-  @Output() clickedLink = new EventEmitter<string>();
-  
+  navbarOpen = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onClickNav(navLinkElement:HTMLAnchorElement){   
-    this.clickedLink.emit(navLinkElement.innerText.trim());
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
-
 }

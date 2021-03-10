@@ -4,25 +4,24 @@
         Recipe Book
     </span>
    <!-- <span class="navbar-brand mb-0 h1">Recipe Book</span> -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button (click)="toggleNavbar()" class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"
+         [ngClass]="{ 'show': navbarOpen }">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a 
-            class="nav-link" 
-            href="#" 
-            #recipeElement
-            (click)="onClickNav(recipeElement)">Recipes</a>
+        <li class="nav-item"
+        [routerLinkActive]="'active'">
+          <a
+            [routerLink]="['/recipes']" 
+            class="nav-link">Recipes</a>
         </li>
-        <li class="nav-item">
-          <a 
-            class="nav-link" 
-            href="#"
-            #shoppingListElement
-            (click)="onClickNav(shoppingListElement)">Shopping List</a>
+        <li class="nav-item"
+        [routerLinkActive]="'active'">
+          <a
+            [routerLink]="['/shopping-list']" 
+            class="nav-link">Shopping List</a>
         </li>     
       </ul>
       <ul class="navbar-nav navbar-right">
@@ -31,8 +30,8 @@
             Manage
           </a>
           <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Save</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Fetch</a>
+            <a ngbDropdownItem style="cursor: pointer;" (click)="$event.preventDefault()">Save</a>
+            <a ngbDropdownItem style="cursor: pointer;" (click)="$event.preventDefault()">Fetch</a>
           </div>
         </li>
       </ul>
