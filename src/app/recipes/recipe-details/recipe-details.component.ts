@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
@@ -15,17 +16,30 @@ import { RecipeService } from '../recipe.service';
 export class RecipeDetailsComponent implements OnInit {
 
   selectRecipe: Recipe;
+  paramSubscription: Subscription;
   private _success = new Subject<string>();
   successMessage = '';
   @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert;
 
   constructor(private recipeService:RecipeService,
-              private shoppingListService: ShoppingListService) { }
+              private shoppingListService: ShoppingListService,
+              private route:ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit(): void {
-    this.recipeService.selectedRecipe.subscribe(
-      (recipe : Recipe) => {
-        this.selectRecipe = recipe;
+
+    const id = +this.route.snapshot.params['id'];
+
+    if(!isNaN(id)){
+      this.selectRecipe = this.recipeService.getRecipeById(id);
+    }else{
+      this.router.navigate(['/recipes']); 
+    }
+    
+    this.paramSubscription = this.route.params.subscribe(
+      (params : Params) => {
+        const id  = +params['id'];
+        this.selectRecipe = this.recipeService.getRecipeById(id);
       }
     );
 
@@ -45,5 +59,10 @@ export class RecipeDetailsComponent implements OnInit {
     this.shoppingListService.addIngredients(this.selectRecipe.ingredients);
     this._success.next("Successfully added to shopping list");
   }
+
+  ngOnDestroy(): void {
+    this.paramSubscription.unsubscribe();
+  }
+
 
 }

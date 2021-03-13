@@ -1,15 +1,16 @@
 <div class="row py-1">
     <div class="col-xs-12">
-        <div 
-            class="card" 
-            style="width: 16rem; cursor: pointer;"
-            (click)="onRecipeClicked()">
-                <img class="card-img-top"  style="max-height: 14rem;" [src]="recipe.imagePath" alt="Card image cap">
-                <div class="card-body">
+        <div class="card" style="width: 16rem;"
+        [routerLinkActive]="'highlight'">
+            <img class="card-img-top" style="max-height: 14rem;" [src]="recipe.imagePath" alt="Card image cap">
+            <div class="card-body">
                 <h5 class="card-title">{{recipe.name}}</h5>
                 <hr>
                 <p class="card-text">{{recipe.description}}</p>
-                </div>
+                <a 
+                    [routerLink] = "[index]"
+                    class="stretched-link"></a>
+            </div>
         </div>
     </div>
 </div>

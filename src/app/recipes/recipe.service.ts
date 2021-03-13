@@ -41,4 +41,8 @@ export class RecipeService {
   getAllRecipes():Recipe[]{
     return [...this.recipes];
   }
+
+  getRecipeById(id : number):Recipe{
+    return [...this.recipes][id];
+  }
 }

@@ -1,0 +1,13 @@
+/* .card:hover {
+    background-color: gainsboro !important;
+} */
+
+.card {
+    transition: 0.3s;
+}
+
+.card:hover {background-color: #DCDCDC !important;}
+
+.highlight {
+    background-color: #DCDCDC;
+}
