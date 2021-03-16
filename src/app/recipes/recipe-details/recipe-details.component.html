@@ -17,7 +17,9 @@
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="width: 100%;">
           <button ngbDropdownItem (click)="addToShoppingList()">Add To Shopping List</button>
           <div role="separator" class="dropdown-divider"></div>
-          <button ngbDropdownItem>Edit Recipe</button>
+          <button 
+            ngbDropdownItem
+            (click)="editRecipe()">Edit Recipe</button>
           <button ngbDropdownItem>Delete Recipe</button>
         </div>
       </div>

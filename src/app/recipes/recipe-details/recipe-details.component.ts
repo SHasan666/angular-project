@@ -16,6 +16,7 @@ import { RecipeService } from '../recipe.service';
 export class RecipeDetailsComponent implements OnInit {
 
   selectRecipe: Recipe;
+  id:number;
   paramSubscription: Subscription;
   private _success = new Subject<string>();
   successMessage = '';
@@ -28,18 +29,18 @@ export class RecipeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const id = +this.route.snapshot.params['id'];
+    this.id = +this.route.snapshot.params['id'];
 
-    if(!isNaN(id)){
-      this.selectRecipe = this.recipeService.getRecipeById(id);
+    if(!isNaN(this.id)){
+      this.selectRecipe = this.recipeService.getRecipeById(this.id);
     }else{
       this.router.navigate(['/recipes']); 
     }
     
     this.paramSubscription = this.route.params.subscribe(
       (params : Params) => {
-        const id  = +params['id'];
-        this.selectRecipe = this.recipeService.getRecipeById(id);
+        this.id  = +params['id'];
+        this.selectRecipe = this.recipeService.getRecipeById(this.id);
       }
     );
 
@@ -58,6 +59,10 @@ export class RecipeDetailsComponent implements OnInit {
     //const rcp = {...this.selectRecipe};
     this.shoppingListService.addIngredients(this.selectRecipe.ingredients);
     this._success.next("Successfully added to shopping list");
+  }
+
+  editRecipe(){
+    this.router.navigate(["edit"] , {relativeTo:this.route});   
   }
 
   ngOnDestroy(): void {

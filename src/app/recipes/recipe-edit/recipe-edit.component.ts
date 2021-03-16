@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeEditComponent implements OnInit {
 
-  constructor() { }
+  id:number;
+  editMode = false;
+  paramSubscription: Subscription;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.paramSubscription = this.route.params.subscribe(
+      (params : Params) => {
+        this.id = +params['id'];
+        this.editMode = params['id'] != null;
+      }
+    );
+
   }
 
 }
