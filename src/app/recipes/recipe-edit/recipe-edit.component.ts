@@ -25,4 +25,8 @@ export class RecipeEditComponent implements OnInit {
 
   }
 
+  ngOnDestroy(): void {
+    this.paramSubscription.unsubscribe();
+  }
+
 }
